@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   has_many :lists
   has_one_attached :user_image
+  has_many :messages
+  has_and_belongs_to_many :conversations,
+    association_foreign_key: "conversation_id",
+    foreign_key: "user_id"
   def set_default_role
     self.role ||= :user
   end

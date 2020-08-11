@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_101134) do
+ActiveRecord::Schema.define(version: 2020_08_11_162414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2020_08_10_101134) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "conversations_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
+    t.index ["user_id", "conversation_id"], name: "index_conversations_users_on_user_id_and_conversation_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.integer "status"
     t.string "remarks"
@@ -48,6 +59,12 @@ ActiveRecord::Schema.define(version: 2020_08_10_101134) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "types", force: :cascade do |t|
@@ -65,13 +82,13 @@ ActiveRecord::Schema.define(version: 2020_08_10_101134) do
     t.string "encrypted_password", default: "", null: false
     t.string "username", null: false
     t.string "address", null: false
+    t.integer "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role"
-    t.integer "phone_number"
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
