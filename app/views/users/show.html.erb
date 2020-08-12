@@ -1,6 +1,29 @@
 <div class="container mt-3" style="height: 100vh;">
 <h1>Dashboard</h1>
 
+
+
+
+
+
+
+
+<div id="messages">
+Messages
+
+<form id="msgSent">
+</form>
+
+
+<% @messages.each do |msg|%>
+<%=msg.content%>
+<%end%>
+</div>
+
+<input id="chatInput"/> 
+
+
+
  <div class="row">
     <div class="col-4">
 <% if @user.user_image.attached? %>
