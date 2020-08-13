@@ -17,6 +17,7 @@ module Trashtalk
     #   YAML.load(File.open(env_file)).each do |key, value|
     #     ENV[key.to_s] = value
     #   end if File.exists?(env_file)
+    
     # end
     config.assets.initialize_on_precompile = false
     
