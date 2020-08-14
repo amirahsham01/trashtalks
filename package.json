@@ -1,6 +1,9 @@
 {
   "name": "trashtalk",
   "private": true,
+  "engines": {
+    "node": ">=8.16.0"
+  },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "@rails/actioncable": "^6.0.0",
