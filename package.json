@@ -2,7 +2,7 @@
   "name": "trashtalk",
   "private": true,
   "engines": {
-    "node": ">=8.16.0"
+    "node": "^8.16.0"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
